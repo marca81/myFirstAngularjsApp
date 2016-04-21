@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<title>Hello Angular</title>
+<script src="angular-1.5.5/angular.min.js"></script>
+<script type="text/javascript">
+angular.module("myApp", [])
+	.controller("userController",   
+        function($scope) { 
+            $scope.utente = {nome: "Mario", cognome: "Rossi"};
+			$scope.salutax = function() { 
+                return "Hello " + $scope.utente.nome + " " + $scope.utente.cognome + "!"
+            };  			
+        }) 
+    .controller("greetingController",   
+        function($scope) { 
+            $scope.saluta = function() { 
+                return "Hello " + $scope.utente.nome + " " + $scope.utente.cognome + "!"
+            };   
+        }); 
+</script>
+
+<body ng-app="myApp">
+
+<div ng-controller="userController">
+    <p>Nome: <input type="text" ng-model="utente.nome"></p>
+    <p>Cognome: <input type="text" ng-model="utente.cognome"></p>
+	<p ng-controller="greetingController">{{saluta()}}</p> 
+	
+	
+	<p ng-show="utente.nome || utente.cognome">{{salutax()}}</p>
+	
+</div>
+
+<span ng-bind="6 + 3"></span> 
+<span>{{ 7 + 3 }}</span>
+
+<div ng-show="true">Questo è un test</div> 
+<div ng-hide="false">Questo è un test</div> 
+
+
+    
+</body>
+</html>
